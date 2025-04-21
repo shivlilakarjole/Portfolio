@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Continuous Progress Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .progress-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ddd;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 30px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      border-radius: 30px;
+      transition: width 0.05s linear;
+    }
+
+    .percent-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔄 Loading Progress</h1>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <div class="percent-text" id="percent-text">0%</div>
+
+  <script>
+    let progress = 0;
+    let direction = 1; // 1 = forward, -1 = reverse (optional if you want to go back and forth)
+
+    function updateProgress() {
+      progress += 1;
+
+      if (progress > 100) {
+        progress = 0; // Reset to loop continuously
+      }
+
+      document.getElementById("progress-bar").style.width = progress + "%";
+      document.getElementById("percent-text").textContent = progress + "%";
+    }
+
+    setInterval(updateProgress, 50); // Update every 50ms
+  </script>
+
+</body>
+</html>

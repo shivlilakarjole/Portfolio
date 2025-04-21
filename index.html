@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="shivlila karjole Personal Portfolio Website" />
+  <title>shivlila karjole | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300%;
+      height: 300%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Button to close the modal */
+    .close-btn {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Styles for sections */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* Animate background color */
+    body.transition-bg {
+      transition: background-color 0.5s ease-in-out;
+    }
+
+    /* Icon Styles */
+    .icon {
+      width: 300px; /* Increased size */
+      height: 300px; /* Increased size */
+      cursor: pointer;
+      margin: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.1); /* Slightly enlarge on hover */
+    }
+
+    /* Center the section-selector and icons */
+    .section-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;  /* This will ensure that the icons wrap to a new line if necessary */
+      margin-top: 40px;  /* Optional, just to add some space from the header */
+    }
+
+    /* Increased size for Academic Icon */
+    #academic-icon {
+      width: 320px; /* Increased size */
+      height: 320px; /* Increased size */
+    }
+
+    /* Increased size for Project, Hobbies, and Certificate icons */
+    #project-icon, #hobbies-icon, #certificate-icon {
+      width: 320px; /* Increased size */
+      height: 320px; /* Increased size */
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Welcome to My portfolio</h1>
+      <p class="subtitle">Portfolio | Projects | Hobbies</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-selector">
+      <!-- Academic Icon -->
+      <img id="academic-icon" src="academic.jpg" alt="Academic Skills" class="icon" onclick="openSection('academic')">
+      
+      <!-- Increased size for Projects, Hobbies, and Certificate icons -->
+      <img id="project-icon" src="project.png" alt="Projects" class="icon" onclick="openSection('projects')">
+      <img id="hobbies-icon" src="hobbies.png" alt="Hobbies" class="icon" onclick="openSection('hobbies')">
+      <img id="certificate-icon" src="certifaction.png" alt="Certificate" class="icon" onclick="openSection('certificate')">
+    </div>
+
+    <!-- Academic Section -->
+    <section id="academic" class="section">
+      <h2>📘 Academic Skills</h2>
+      <ul>
+        <li>Web Development (HTML, CSS, JS)</li>
+        <li>Microcontroller Programming (8051, Arduino)</li>
+        <li>Problem Solving & Algorithms</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2>💼 Projects</h2>
+      <ul>
+        <a href="http://127.0.0.1:5500/index2.html"> ⏱️ stopwatch</a>
+        <br>
+        <a href="http://127.0.0.1:5500/ise3.html"> ✍ Typing speed test</a>
+        <br>
+        <a href="http://127.0.0.1:5500/ise1.html"> 🔐 login page</a>
+        <br>
+        <a href="http://127.0.0.1:5500/ise2.html"> % progress bar </a>
+
+      </ul>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="section">
+      <h2>🎨 Hobbies</h2>
+      <ul>
+        <li>🎧 Listening to Music</li>
+        <li>📷 Photography</li>
+        <li>✈️ Traveling & Exploring</li>
+      </ul>
+    </section>
+
+    <!-- Certificate Section -->
+    <section id="certificate" class="section">
+      <h2>🎓 Photos & Certificates</h2>
+      <div class="gallery">
+        <a href="yuva.jpg" onclick="openImage()">
+          <p style="font-size: 20px; color: #007BFF;">yuva darpan</p>
+        </a>
+        <img id="yuva" src= "yuva.jpg" alt="paper"  style="width: 200px; height: 200px;">
+        <a href="paper.png" onclick="openImage()">
+          <p style="font-size: 20px; color: #007BFF;">paper spark</p>
+        </a>
+        <img id="image" src= "paper.png" alt="paper"  style="width: 200px; height: 200px;">
+        <a href="idea.png" onclick="openImage()">
+          <p style="font-size: 20px; color: #007BFF;">idea spark</p>
+        </a>
+        <img id="image" src= "idea.png" alt="idea"  style="width: 200px; height: 200px;">
+      </div>
+    </section>
+
+    <section class="card form-card">
+      <h2>📝 Submit Your Details</h2>
+      <form id="submissionForm">
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="username" placeholder="Enter your name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="roll">Your Roll No:</label>
+          <input type="text" id="roll" name="rollno" placeholder="Enter roll number" required />
+        </div>
+
+        <div class="form-group">
+          <label>Choose Department:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="dept" value="CSE" required /> CSE</label>
+            <label><input type="radio" name="dept" value="ECE" /> ECE</label>
+            <label><input type="radio" name="dept" value="EEE" /> EEE</label>
+          </div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+
+      <div id="output" class="output-box"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>shivlila karjole. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Modal for displaying certificate details -->
+  <div id="certificateModal" class="modal">
+    <div class="modal-content">
+      <h2>Certificate Details</h2>
+      <p>This is the certificate that I received for completing the Web Development Course!</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to show the section when clicked
+    function openSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Show the selected section
+      const selectedSection = document.getElementById(sectionId);
+      selectedSection.classList.add('active');
+    }
+
+    // Function that runs when the certificate image is clicked
+    function runProgram() {
+      alert("🎉 The certificate image was clicked! Running your code...");
+
+      // Play a sound (You need to have sound.mp3 in the same directory or change the path)
+      var audio = new Audio('sound.mp3');
+      audio.play();
+
+      // Animate background color change
+      document.body.classList.add("transition-bg");
+      document.body.style.backgroundColor = "#ffcc00"; // yellow background on click
+
+      // Show modal with certificate details
+      document.getElementById("certificateModal").style.display = "flex";
+
+      // Revert the background color after 500ms
+      setTimeout(() => {
+        document.body.style.backgroundColor = "";
+      }, 500);
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById("certificateModal").style.display = "none";
+    }
+
+    // Handle form submission
+    function submitForm() {
+      const name = document.getElementById("name").value;
+      const roll = document.getElementById("roll").value;
+      const dept = document.querySelector('input[name="dept"]:checked');
+
+      if (!dept) {
+        alert("Please select a department.");
+        return;
+      }
+
+      const outputDiv = document.getElementById("output");
+      outputDiv.style.display = "block";
+      outputDiv.innerHTML = ` 
+        <strong>Submitted Details:</strong><br>
+        Name: ${name}<br>
+        Roll No: ${roll}<br>
+        Department: ${dept.value}
+      `;
+    }
+  </script>
+</body>
+</html>

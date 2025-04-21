@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stopwatch</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    #display {
+      font-size: 60px;
+      margin-bottom: 30px;
+      color: #007BFF;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background-color: #007BFF;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button.reset {
+      background-color: #dc3545;
+    }
+
+    button.reset:hover {
+      background-color: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Stopwatch</h1>
+  <div id="display">00:00:00</div>
+  <button onclick="startStop()">Start</button>
+  <button onclick="reset()" class="reset">Reset</button>
+
+  <script>
+    let timer;
+    let isRunning = false;
+    let seconds = 0;
+
+    function updateDisplay() {
+      const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      document.getElementById('display').textContent = `${hrs}:${mins}:${secs}`;
+    }
+
+    function startStop() {
+      if (!isRunning) {
+        timer = setInterval(() => {
+          seconds++;
+          updateDisplay();
+        }, 1000);
+        document.querySelector("button").innerText = "Pause";
+        isRunning = true;
+      } else {
+        clearInterval(timer);
+        document.querySelector("button").innerText = "Start";
+        isRunning = false;
+      }
+    }
+
+    function reset() {
+      clearInterval(timer);
+      seconds = 0;
+      isRunning = false;
+      updateDisplay();
+      document.querySelector("button").innerText = "Start";
+    }
+
+    // Initialize
+    updateDisplay();
+  </script>
+</body>
+</html>
