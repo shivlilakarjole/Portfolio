@@ -12,6 +12,7 @@
   <style>
     /* Modal Styles */
     .modal {
+      
       display: none;
       position: fixed;
       top: 0;
@@ -32,6 +33,8 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
+
 
     @keyframes fadeIn {
       0% { opacity: 0; }
@@ -95,6 +98,16 @@
       width: 320px; /* Increased size */
       height: 320px; /* Increased size */
     }
+    table {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
   </style>
 </head>
 <body>
@@ -106,7 +119,7 @@
   </header>
 
   <main class="container">
-    <div class="section-selector">
+    <div id="iconSection" class="section-selector" style="display: none;">
       <!-- Academic Icon -->
       <img id="academic-icon" src="academic.jpg" alt="Academic Skills" class="icon" onclick="openSection('academic')">
       <!-- Time Table Icon -->
@@ -117,6 +130,12 @@
       <img id="hobbies-icon" src="hobbies.png" alt="Hobbies" class="icon" onclick="openSection('hobbies')">
       <img id="certificate-icon" src="certifaction.png" alt="Certificate" class="icon" onclick="openSection('certificate')">
     </div>
+
+    <div id="startPage" style="text-align: center; margin-top: 100px;">
+      <h2>👋 Welcome to My Portfolio</h2>
+      <button onclick="startPortfolio()" style="padding: 15px 30px; font-size: 18px; border-radius: 10px;">Enter Site</button>
+    </div>
+    
 
     <!-- Academic Section -->
     <section id="academic" class="section">
@@ -283,6 +302,15 @@
 
   <!-- JavaScript -->
   <script>
+
+   function startPortfolio() {
+  // Hide the welcome/start section
+  document.getElementById("startPage").style.display = "none";
+  
+  // Show the icons
+  document.getElementById("iconSection").style.display = "flex";
+}
+
     // Function to show the section when clicked
     function openSection(sectionId) {
       // Hide all sections
